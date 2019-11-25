@@ -1,0 +1,23 @@
+{
+    "githubUsername": "RCVS-London",
+    "neverUpdate": [
+        "@types/react-test-renderer*",
+        "@types/react",
+        "react-dom",
+        "react-native",
+        "react-redux",
+        "react-test-renderer*",
+        "React"
+    ],
+    "onlyUpdatePatches": [
+        "expo*",
+        "lottie-react-native",
+        "react-native-gesture-handler",
+        "react-native-reanimated",
+        "react-native-svg",
+        "react-native-view-shot",
+        "react-navigation",
+        "typescript"
+    ],
+    "repoName": "cpd-mobile"
+}
