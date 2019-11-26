@@ -18,8 +18,7 @@ const options = {
 };
 const mergeInput = {merge_method: "rebase"};
 
-const getCommitRegex = modules =>
-    new RegExp("bumps (" + modules.join(" |") + " )", "g");
+const getCommitRegex = modules => new RegExp("bump (" + modules.join(" |") + " )", "g");
 
 // Check contents of pull request via the Github API
 axios
