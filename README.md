@@ -7,15 +7,14 @@ as of this writing, it does not automatically merge those pull requests.
 Behold, Dependamerge! Dependamerge lets you push Dependabot to its limits by
 automatically merging all pull requests. You can run it only when your tests pass on
 continuous integration, or, for the more adventurous, you could have it merge anything
-no matter what. Importantly, it also allows you to blacklist some updates if they cause
-problems.
+no matter what. Importantly, it also allows you to blacklist pesky updates.
 
 ## Install
 
 ### Step 1:
 
 ```bash
-npm install dependamerge
+npm install --save-dev dependamerge
 ```
 
 ### Step 2:
@@ -23,12 +22,12 @@ npm install dependamerge
 Create a `dependamerge.json` file in your project's root directory. It accepts the
 following fields:
 
-| Field             | Description                                                                                    | Required | Type     |
+| Field             | Description                                                                                    | Type     | Required |
 | ----------------- | ---------------------------------------------------------------------------------------------- | -------- | -------- |
-| githubUsername    | The project owner's Github username.                                                           | Yes      | string   |
-| neverUpdate       | Dependencies that should never be automatically updated. Accepts regular expressions.          | No       | string[] |
-| onlyUpdatePatches | Dependencies that should only have patches automatically updated. Accepts regular expressions. | No       | string[] |
-| repoName          | The name of your project's Github repository.                                                  | Yes      | string   |
+| githubUsername    | The project owner's Github username.                                                           | string   | Yes      |
+| neverUpdate       | Dependencies that should never be automatically updated. Accepts regular expressions.          | string[] | No       |
+| onlyUpdatePatches | Dependencies that should only have patches automatically updated. Accepts regular expressions. | string[] | No       |
+| repoName          | The name of your project's Github repository.                                                  | string   | Yes      |
 
 ### Step 3:
 
@@ -39,8 +38,8 @@ your continuous integration software.
 
 ### Step 4:
 
-Invoke Dependamerge after your continuous integration software finishes running your
-tests for pull requests. Don't worry, it will ignore pull requests by users other than
+Invoke Dependamerge after your continuous integration software successfully finishes
+testing pull requests. Don't worry, it will ignore pull requests by users other than
 Dependabot. Be sure to pass it the pull request's number and the Github token created in
 step 3. On [Travis CI](https://travis-ci.com/) this is accomplished by adding the
 following snippet to `travis.yml`.
@@ -64,4 +63,4 @@ accidentally introducing bugs.
 
 ## Contributing
 
-Contributions would be happily welcomed! Please open an issue to get started.
+Contributions would be much appreciated! Please open an issue to get started.
