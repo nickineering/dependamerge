@@ -1,8 +1,12 @@
-// Automatically merges dependabot pull requests if they are low risk.
+// Automatically merges Dependabot pull requests if they are low risk.
 
 const axios = require("axios");
 const semver = require("semver");
 const settings = require("../../dependamerge.json");
+
+const isByDependabot = require("./helpers").isByDependabot;
+const isNeverUpdate = require("./helpers").isNeverUpdate;
+const isTooMajor = require("./helpers").isTooMajor;
 
 // Arguments provided by CI
 const pullRequestId = process.argv[2];
@@ -18,8 +22,6 @@ const options = {
 };
 const mergeInput = {merge_method: "rebase"};
 
-const getCommitRegex = modules => new RegExp("bump (" + modules.join(" |") + " )", "g");
-
 // Check contents of pull request via the Github API
 axios
     .get(pullRequestUrl, options)
@@ -28,36 +30,29 @@ axios
         const title = response.data.title;
 
         // Ignore pull request if not by dependabot
-        if (!author.includes("dependabot")) {
+        if (!isByDependabot(author)) {
             console.log("Pull request was not authored by dependabot");
             process.exit(0);
         }
 
         // Ignore pull request if title is one known to cause problems
-        if (title.match(getCommitRegex(settings.neverUpdate))) {
+        if (isNeverUpdate(title)) {
             console.log("Dependency should be reviewed manually");
             process.exit(0);
         }
 
         // Ignore pull request if upgrade is not a patch and on review list
-        if (title.match(getCommitRegex(settings.onlyUpdatePatches))) {
-            const versions = title.match(/[0-9]+\.[0-9]+\.[0-9]+/g);
-            const sameMajorVersion =
-                semver.major(versions[0]) === semver.major(versions[1]);
-            const sameMinorVersion =
-                semver.minor(versions[0]) === semver.minor(versions[1]);
-            if (!sameMajorVersion || !sameMinorVersion) {
-                console.log(
-                    "Dependency should be reviewed manually because it is not a patch",
-                );
-                process.exit(0);
-            }
+        if (isTooMajor(title)) {
+            console.log(
+                "Dependency should be reviewed manually because it is not a patch",
+            );
+            process.exit(0);
         }
 
         // Since script has not exited it is safe to merge
         axios
             .put(pullRequestUrl + "/merge", mergeInput, options)
-            .then(response => {
+            .then(() => {
                 console.log("Pull request merged successfully");
             })
             .catch(err => {
