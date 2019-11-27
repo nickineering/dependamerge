@@ -1,26 +1,32 @@
 {
-    "name": "dependamerge",
-    "version": "1.0.0",
-    "description": "Automatically merge Dependabot pull requests",
-    "main": "src/index.js",
-    "scripts": {
-        "test": "jest"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/nferrara100/dependamerge.git"
-    },
     "author": "Nicholas Ferrara",
-    "license": "Apache-2.0",
     "bugs": {
         "url": "https://github.com/nferrara100/dependamerge/issues"
     },
-    "homepage": "https://github.com/nferrara100/dependamerge#readme",
     "dependencies": {
         "axios": "^0.19.0",
         "semver": "^6.3.0"
     },
+    "description": "Automatically merge Dependabot pull requests",
     "devDependencies": {
         "jest": "^24.9.0"
-    }
+    },
+    "homepage": "https://github.com/nferrara100/dependamerge#readme",
+    "keywords": [
+        "ci",
+        "dependabot",
+        "dependency-manager",
+        "security-automation"
+    ],
+    "license": "Apache-2.0",
+    "main": "src/index.js",
+    "name": "dependamerge",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nferrara100/dependamerge.git"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "version": "1.0.0"
 }

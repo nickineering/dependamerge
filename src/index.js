@@ -1,4 +1,4 @@
-// Automatically merges Dependabot pull requests if they are low risk.
+// Automatically merges Dependabot pull requests if they are low risk
 
 const axios = require("axios");
 const settings = require("../../../dependamerge.json");
@@ -28,7 +28,7 @@ axios
         const author = response.data.user.login;
         const title = response.data.title;
 
-        // Ignore pull request if not by dependabot
+        // Ignore pull request if not by Dependabot
         if (!isByDependabot(author)) {
             console.log("Pull request was not authored by dependabot");
             process.exit(0);

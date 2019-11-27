@@ -4,9 +4,12 @@ const semver = require("semver");
 const settings = require("../../../dependamerge.json");
 
 const getCommitRegex = modules => new RegExp("bump (" + modules.join(" |") + " )", "g");
+
 const isByDependabot = author => author.includes("dependabot");
+
 const isNeverUpdate = title =>
     title.match(getCommitRegex(settings.neverUpdate)) !== null;
+
 const isTooMajor = title => {
     if (title.match(getCommitRegex(settings.onlyUpdatePatches))) {
         const versions = title.match(/[0-9]+\.[0-9]+\.[0-9]+/g);

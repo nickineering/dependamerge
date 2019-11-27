@@ -39,11 +39,11 @@ your continuous integration software.
 
 ### Step 4:
 
-Invoke Dependamerge after your continuous integration software finishes your tests for
-pull requests. Don't worry, it will ignore pull requests by users other than Dependabot.
-Be sure to pass it the pull request's number and the Github token created in step 3. On
-[Travis CI](https://travis-ci.com/) this is accomplished by adding the following snippet
-to `travis.yml`.
+Invoke Dependamerge after your continuous integration software finishes running your
+tests for pull requests. Don't worry, it will ignore pull requests by users other than
+Dependabot. Be sure to pass it the pull request's number and the Github token created in
+step 3. On [Travis CI](https://travis-ci.com/) this is accomplished by adding the
+following snippet to `travis.yml`.
 
 ```yml
 after_success:
