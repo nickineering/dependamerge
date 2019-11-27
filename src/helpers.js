@@ -1,7 +1,7 @@
 // Helper functions
 
 const semver = require("semver");
-const settings = require("../../dependamerge.json");
+const settings = require("../../../dependamerge.json");
 
 const getCommitRegex = modules => new RegExp("bump (" + modules.join(" |") + " )", "g");
 const isByDependabot = author => author.includes("dependabot");

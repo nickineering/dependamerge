@@ -1,8 +1,7 @@
 // Automatically merges Dependabot pull requests if they are low risk.
 
 const axios = require("axios");
-const semver = require("semver");
-const settings = require("../../dependamerge.json");
+const settings = require("../../../dependamerge.json");
 
 const isByDependabot = require("./helpers").isByDependabot;
 const isNeverUpdate = require("./helpers").isNeverUpdate;

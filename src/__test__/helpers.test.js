@@ -1,10 +1,14 @@
-const isByDependabot = require("./helpers").isByDependabot;
-const isNeverUpdate = require("./helpers").isNeverUpdate;
-const isTooMajor = require("./helpers").isTooMajor;
+const isByDependabot = require("../helpers").isByDependabot;
+const isNeverUpdate = require("../helpers").isNeverUpdate;
+const isTooMajor = require("../helpers").isTooMajor;
 
-jest.mock("../../dependamerge.json", () => require("./dependamerge-example.json"), {
-    virtual: true,
-});
+jest.mock(
+    "../../../../dependamerge.json",
+    () => require("../../dependamerge-example.json"),
+    {
+        virtual: true,
+    },
+);
 
 describe("isByDependabot", () => {
     const authorAllowed = "Nicholas Ferrara";
