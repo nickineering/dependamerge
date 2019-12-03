@@ -3,7 +3,12 @@
 const semver = require("semver");
 const settings = require("../../../dependamerge.json");
 
-const getCommitRegex = modules => new RegExp("bump (" + modules.join(" |") + " )", "g");
+const getCommitRegex = modules => {
+    if (modules) {
+        return new RegExp("bump (" + modules.join(" |") + " )", "g");
+    }
+    return new RegExp("do not bump");
+};
 
 const isByDependabot = author => author.includes("dependabot");
 
