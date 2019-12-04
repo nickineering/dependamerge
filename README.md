@@ -1,8 +1,9 @@
 # Automatically merge Dependabot pull requests
 
 Github includes an awesome feature called [Dependabot](https://dependabot.com/), which
-automatically creates pull requests to update your outdated dependencies. Unfortunately,
-as of this writing, it does not automatically merge those pull requests.
+automatically creates pull requests to update your outdated dependencies. It supports
+automatically merging those pull requests, but sadly does not have a blacklist for
+troublesome updates.
 
 Behold, Dependamerge! Dependamerge lets you push Dependabot to its limits by
 automatically merging all pull requests. You can run it only when your tests pass on
