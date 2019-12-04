@@ -1,4 +1,4 @@
-# Automatically merge Dependabot pull requests
+# Fine tune automatic merging for Dependabot pull requests
 
 Github includes an awesome feature called [Dependabot](https://dependabot.com/), which
 automatically creates pull requests to update your outdated dependencies. It supports
