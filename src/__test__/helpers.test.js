@@ -43,14 +43,35 @@ describe("isNeverUpdate", () => {
     });
 });
 
-describe("isTooMajor", () => {
+describe("isTooMajor * regex", () => {
     const titleAllowed = "chore(deps-dev): bump moment from 1.0.0 to 2.1.1";
-    const titleMajor = "chore(deps-dev): bump typescript from 1.0.0 to 2.0.0";
-    const titlePatch = "chore(deps-dev): bump typescript from 1.0.0 to 1.0.1";
+    const titleMajor = "chore(deps-dev): bump expo-svg from 1.0.0 to 2.0.0";
+    const titlePatch = "chore(deps-dev): bump expo-svg from 1.0.0 to 1.0.1";
 
     it("to correctly return true for a major update ", async () => {
         const result = isTooMajor(titleMajor);
         expect(result).toEqual(true);
+    });
+    it("to correctly return false for a patch update", async () => {
+        const result = isTooMajor(titlePatch);
+        expect(result).toEqual(false);
+    });
+    it("to correctly return false", async () => {
+        const result = isTooMajor(titleAllowed);
+        expect(result).toEqual(false);
+    });
+});
+
+describe("isTooMajor not affected update", () => {
+    const titleAllowed = "chore(deps-dev): bump moment from 1.0.0 to 2.1.1";
+    const titleMajor =
+        "chore(deps-dev): bump react-navigation-stack from 1.0.0 to 2.0.0";
+    const titlePatch =
+        "chore(deps-dev): bump react-navigation-stack from 1.0.0 to 1.0.1";
+
+    it("to correctly return false for a major update ", async () => {
+        const result = isTooMajor(titleMajor);
+        expect(result).toEqual(false);
     });
     it("to correctly return false for a patch update", async () => {
         const result = isTooMajor(titlePatch);

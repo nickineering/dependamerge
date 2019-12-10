@@ -10,7 +10,7 @@
         "React"
     ],
     "onlyUpdatePatches": [
-        "expo*",
+        "expo.*",
         "lottie-react-native",
         "react-native-gesture-handler",
         "react-native-reanimated",
