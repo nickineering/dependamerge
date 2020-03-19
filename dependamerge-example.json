@@ -1,23 +1,28 @@
 {
     "githubUsername": "RCVS-London",
     "neverUpdate": [
-        "@types/react-test-renderer*",
-        "@types/react",
         "react-dom",
+        "react-native-safe-area-context",
+        "react-native-screens",
         "react-native",
         "react-redux",
         "react-test-renderer*",
-        "React"
+        "react"
     ],
     "onlyUpdatePatches": [
+        "@types/react-test-renderer*",
+        "@types/react",
+        "babel-preset-expo",
         "expo.*",
         "lottie-react-native",
+        "react-native-appearance",
         "react-native-gesture-handler",
         "react-native-reanimated",
         "react-native-svg",
         "react-native-view-shot",
         "react-navigation",
-        "typescript"
+        "typescript",
+        "uuid"
     ],
     "repoName": "cpd-mobile"
 }
