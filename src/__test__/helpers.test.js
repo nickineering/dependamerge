@@ -26,8 +26,8 @@ describe("isByDependabot", () => {
 
 describe("isNeverUpdate", () => {
     const titleAllowed = "chore(deps-dev): bump moment from 1.0.0 to 2.1.1";
-    const titleMajor = "chore(deps-dev): bump React from 1.0.0 to 2.0.0";
-    const titlePatch = "chore(deps-dev): bump React from 1.0.0 to 1.0.1";
+    const titleMajor = "chore(deps-dev): bump react from 1.0.0 to 2.0.0";
+    const titlePatch = "chore(deps-dev): bump react from 1.0.0 to 1.0.1";
 
     it("to correctly return true for a major update ", async () => {
         const result = isNeverUpdate(titleMajor);
