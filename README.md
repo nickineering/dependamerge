@@ -23,12 +23,12 @@ npm install --save-dev dependamerge
 Create a `dependamerge.json` file in your project's root directory. It accepts the
 following fields:
 
-| Field             | Description                                                                                    | Type     | Required |
-| ----------------- | ---------------------------------------------------------------------------------------------- | -------- | -------- |
-| githubUsername    | The project owner's Github username.                                                           | string   | Yes      |
-| neverUpdate       | Dependencies that should never be automatically updated. Accepts regular expressions.          | string[] | No       |
-| onlyUpdatePatches | Dependencies that should only have patches automatically updated. Accepts regular expressions. | string[] | No       |
-| repoName          | The name of your project's Github repository.                                                  | string   | Yes      |
+| Field               | Description                                                                                    | Type       | Required |
+| ------------------- | ---------------------------------------------------------------------------------------------- | ---------- | -------- |
+| `githubUsername`    | The project owner's Github username.                                                           | `string`   | Yes      |
+| `neverUpdate`       | Dependencies that should never be automatically updated. Accepts regular expressions.          | `string[]` | No       |
+| `onlyUpdatePatches` | Dependencies that should only have patches automatically updated. Accepts regular expressions. | `string[]` | No       |
+| `repoName`          | The name of your project's Github repository.                                                  | `string`   | Yes      |
 
 ### Step 3:
 
