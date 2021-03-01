@@ -24,7 +24,7 @@ const mergeInput = {merge_method: "rebase"};
 // Check contents of pull request via the Github API
 axios
     .get(pullRequestUrl, options)
-    .then(response => {
+    .then((response) => {
         const author = response.data.user.login;
         const title = response.data.title;
 
@@ -54,10 +54,12 @@ axios
             .then(() => {
                 console.log("Pull request merged successfully");
             })
-            .catch(err => {
-                console.error("Error: " + err.message);
+            .catch((error) => {
+                console.error("Error merging pull request: " + error.message);
+                process.exit(1);
             });
     })
-    .catch(err => {
-        console.error("Error: " + err.message);
+    .catch((error) => {
+        console.error("Error fetching pull request: " + error.message);
+        process.exit(1);
     });
