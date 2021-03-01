@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Automatically merges Dependabot pull requests if they are low risk
 
 const axios = require("axios");

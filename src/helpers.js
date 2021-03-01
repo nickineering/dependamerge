@@ -1,21 +1,23 @@
+#!/usr/bin/env node
+
 // Helper functions
 
 const semver = require("semver");
 const settings = require("../../../dependamerge.json");
 
-const getCommitRegex = modules => {
+const getCommitRegex = (modules) => {
     if (modules) {
         return new RegExp("bump (" + modules.join(" |") + " )", "g");
     }
     return new RegExp("do not bump");
 };
 
-const isByDependabot = author => author.includes("dependabot");
+const isByDependabot = (author) => author.includes("dependabot");
 
-const isNeverUpdate = title =>
+const isNeverUpdate = (title) =>
     title.match(getCommitRegex(settings.neverUpdate)) !== null;
 
-const isTooMajor = title => {
+const isTooMajor = (title) => {
     if (title.match(getCommitRegex(settings.onlyUpdatePatches))) {
         const versions = title.match(/[0-9]+\.[0-9]+\.[0-9]+/g);
         const sameMajorVersion =

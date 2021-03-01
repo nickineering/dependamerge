@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const isByDependabot = require("../helpers").isByDependabot;
 const isNeverUpdate = require("../helpers").isNeverUpdate;
 const isTooMajor = require("../helpers").isTooMajor;
