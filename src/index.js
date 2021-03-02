@@ -32,20 +32,22 @@ axios
 
         // Ignore pull request if not by Dependabot
         if (!isByDependabot(author)) {
-            console.log("Pull request was not authored by dependabot");
+            console.log("Not merged: Pull request was not authored by dependabot.");
             process.exit(0);
         }
 
         // Ignore pull request if title is one known to cause problems
         if (isNeverUpdate(title)) {
-            console.log("Dependency should be reviewed manually");
+            console.log(
+                "Not merged: Dependency should be reviewed manually because it is set to never update.",
+            );
             process.exit(0);
         }
 
         // Ignore pull request if upgrade is not a patch and on review list
         if (isTooMajor(title)) {
             console.log(
-                "Dependency should be reviewed manually because it is not a patch",
+                "Not merged: Dependency should be reviewed manually because it is not a patch.",
             );
             process.exit(0);
         }
@@ -54,14 +56,20 @@ axios
         axios
             .put(pullRequestUrl + "/merge", mergeInput, options)
             .then(() => {
-                console.log("Pull request merged successfully");
+                console.log("Pull request merged successfully.");
             })
             .catch((error) => {
                 console.error("Error merging pull request: " + error.message);
+                console.log(
+                    "Are you sure the pull request number you provided is correct and the Github token you provided has merge permission?",
+                );
                 process.exit(1);
             });
     })
     .catch((error) => {
         console.error("Error fetching pull request: " + error.message);
+        console.log(
+            "Are you sure you provided a valid pull request number and Github token?",
+        );
         process.exit(1);
     });
