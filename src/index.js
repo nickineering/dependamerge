@@ -24,6 +24,16 @@ const options = {
 };
 const mergeInput = {merge_method: "rebase"};
 
+const displayPrettyError = (error, errorCategory, errorHelpText) => {
+    console.error(errorCategory + ": " + error.message);
+    if (error.response?.data?.message) {
+        console.log(error.response.data.message);
+        console.log("More information: " + error.response.data?.documentation_url);
+    }
+    console.log(errorHelpText);
+    process.exit(1);
+};
+
 // Check contents of pull request via the Github API
 axios
     .get(pullRequestUrl, options)
@@ -60,19 +70,17 @@ axios
                 console.log("Pull request merged successfully.");
             })
             .catch((error) => {
-                console.error("Error merging pull request: " + error.message);
-                console.log(error.response.data);
-                console.log(
+                displayPrettyError(
+                    error,
+                    "Error merging pull request",
                     "Are you sure the pull request number you provided is correct and the Github token you provided has merge permission?",
                 );
-                process.exit(1);
             });
     })
     .catch((error) => {
-        console.error("Error fetching pull request: " + error.message);
-        console.log(error.response.data);
-        console.log(
+        displayPrettyError(
+            error,
+            "Error fetching pull request",
             "Are you sure you provided a valid pull request number and Github token?",
         );
-        process.exit(1);
     });
