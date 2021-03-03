@@ -17,6 +17,7 @@ const githubToken = process.argv[3];
 const pullRequestUrl = `https://api.github.com/repos/${settings.githubUsername}/${settings.repoName}/pulls/${pullRequestId}`;
 const options = {
     headers: {
+        "content-type": "application/json",
         "User-Agent": "node/https",
         Authorization: `token ${githubToken}`,
     },
@@ -60,6 +61,7 @@ axios
             })
             .catch((error) => {
                 console.error("Error merging pull request: " + error.message);
+                console.log(error.response.data);
                 console.log(
                     "Are you sure the pull request number you provided is correct and the Github token you provided has merge permission?",
                 );
@@ -68,6 +70,7 @@ axios
     })
     .catch((error) => {
         console.error("Error fetching pull request: " + error.message);
+        console.log(error.response.data);
         console.log(
             "Are you sure you provided a valid pull request number and Github token?",
         );
