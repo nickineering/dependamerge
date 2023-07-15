@@ -1,5 +1,10 @@
 # Fine tune automatic merging for Dependabot pull requests
 
+> **Warning**
+> This project is now **deprecated** due to dependabot's API changing. You
+> should use [RenovateBot](https://github.com/renovatebot/renovate) instead, which does
+> the same thing now.
+
 Github includes an awesome feature called [Dependabot](https://dependabot.com/), which
 automatically creates pull requests to update your outdated dependencies. It supports
 automatically merging those pull requests, but sadly does not have a blacklist for
